@@ -13,7 +13,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return response()->json(['success'=>true, 'message'=>'Successfully retrieved student data']);
+
+        $students = Student::all();
+
+        return response()->json(['success'=>true,'status_code'=>200, 'message'=>'Successfully retrieved student data', 'data'=>$students]);
     }
 
     /**

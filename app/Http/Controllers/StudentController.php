@@ -92,7 +92,28 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        if($request->name){
+            $student->name = $request->name;
+        }
+        if($request->email){
+            $student->email = $request->email;
+        }
+        if($request->photo){
+            unlink(public_path('uploads/'. $request->photo));
+            $student->photo = $request->photo;
+        }
+
+        $student->update();
+
+        // info($request);
+
+        return response()->json([
+            'success'=>true,
+            'status_code'=>200,
+            'message'=>'Successfully updated data'
+        ]);
+
+
     }
 
     /**

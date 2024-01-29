@@ -47,7 +47,7 @@ class StudentController extends Controller
 
 
         if($validator ->fails()){
-            return response()->json(['error'=>$validator->errors()]);
+            return response()->json(['success'=>false, 'status_code'=>400, 'messsage'=>'Validation error','error'=>$validator->errors()]);
         }
 
 
@@ -75,7 +75,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+
+        return response()->json(['success'=>true, 'status_code'=>200, 'message'=>'Success retrieved data by id', 'data'=>$student]);
     }
 
     /**
